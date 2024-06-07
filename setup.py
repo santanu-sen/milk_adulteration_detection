@@ -8,7 +8,7 @@ __version__ = "0.0.0"
 
 REPO_NAME = "milk_adulteration_detection"
 AUTHOR_USER_NAME = "santanu-sen"
-SRC_REPO = "milk_adulteration_detection"
+SRC_REPO = "detection"
 AUTHOR_EMAIL = "santanusen999@gmail.com"
 
 
