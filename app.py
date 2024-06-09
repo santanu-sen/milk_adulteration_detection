@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 import os
+from pathlib import Path
 from flask_cors import CORS, cross_origin
 from detection.utils.common import decodeImage
 from detection.pipeline.predict import PredictionPipeline
@@ -15,7 +16,8 @@ CORS(app)
 class ClientApp:
     def __init__(self):
         self.filename = "inputImage.jpg"
-        self.classifier = PredictionPipeline(self.filename)
+        self.directory = Path()
+        self.classifier = PredictionPipeline(self.directory, self.filename)
 
 
 @app.route("/", methods=['GET'])
