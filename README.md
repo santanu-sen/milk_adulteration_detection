@@ -139,16 +139,15 @@ tensorboard --logdir artifacts/prepare_callbacks/tensorboard_log_dir/
 
 ## Save pass:
 
-s3cEZKH5yytiVnJ3h+eI3qhhzf9q1vNwEi6+q+WGdd+ACRCZ7JD6
-
+CBP+IJ4pTOgJDz75AWkOrY3WEV75UPZMPE6grUO6mS+ACRCump3p
 
 ## Run from terminal:
 
-docker build -t chickenapp.azurecr.io/chicken:latest .
+docker build -t detectionapp.azurecr.io/detection:latest .
 
-docker login chickenapp.azurecr.io
+docker login detectionapp.azurecr.io
 
-docker push chickenapp.azurecr.io/chicken:latest
+docker push detectionapp.azurecr.io/detection:latest
 
 
 ## Deployment Steps:
