@@ -1,6 +1,6 @@
 from detection.constants import *
 from detection.utils.common import read_yaml, create_directories
-from detection.entity.config_entity import (DataIngestionConfig, PrepareBaseModelConfig, PrepareCallbacksConfig, TrainingConfig)
+from detection.entity.config_entity import (DataIngestionConfig, PrepareBaseModelConfig, TrainingConfig)
 import os
 
 class ConfigurationManager:

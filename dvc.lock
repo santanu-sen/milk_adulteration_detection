@@ -1,0 +1,68 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/detection/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 98cfb92b52634547d123b91927c24313
+      size: 608
+    - path: src/detection/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: 715130767d985abe84086954e7fc710a
+      size: 851
+    outs:
+    - path: artifacts/data_ingestion
+      hash: md5
+      md5: 68316d870fdba00f1b4d48c5586d196d.dir
+      size: 27955468
+      nfiles: 1821
+  prepare_base_model:
+    cmd: python src/detection/pipeline/stage_02_prepare_base_model.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 98cfb92b52634547d123b91927c24313
+      size: 608
+    - path: src/detection/pipeline/stage_02_prepare_base_model.py
+      hash: md5
+      md5: 8fc84dbaa5ca81280f71e361e82b0fa5
+      size: 989
+    params:
+      params.yaml:
+        THRESHOLD: 0.5
+    outs:
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: 0b56e4d5fc713a5177b51c83b684ad5c.dir
+      size: 1509
+      nfiles: 2
+  training:
+    cmd: python src/detection/pipeline/stage_03_training.py
+    deps:
+    - path: artifacts/data_ingestion
+      hash: md5
+      md5: 68316d870fdba00f1b4d48c5586d196d.dir
+      size: 27955468
+      nfiles: 1821
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: 0b56e4d5fc713a5177b51c83b684ad5c.dir
+      size: 1509
+      nfiles: 2
+    - path: config/config.yaml
+      hash: md5
+      md5: 98cfb92b52634547d123b91927c24313
+      size: 608
+    - path: src/detection/pipeline/stage_03_training.py
+      hash: md5
+      md5: 8351b87e978cd030720d12529641979d
+      size: 1117
+    params:
+      params.yaml:
+        THRESHOLD: 0.5
+    outs:
+    - path: artifacts/training/model.joblib
+      hash: md5
+      md5: 40c9266e7a7b5effa8c67a521431ff7b
+      size: 121194

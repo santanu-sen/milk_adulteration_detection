@@ -1,5 +1,4 @@
 from detection.config.configuration import ConfigurationManager
-from detection.components.prepare_callbacks import PrepareCallback
 from detection.components.training import Training
 from detection import logger
 
@@ -14,8 +13,6 @@ class ModelTrainingPipeline:
 
     def main(self):
         config = ConfigurationManager()
-        prepare_callbacks_config = config.get_prepare_callback_config()
-        prepare_callbacks = PrepareCallback(config=prepare_callbacks_config)
         trainingConfig = config.get_training_config()
 
         
