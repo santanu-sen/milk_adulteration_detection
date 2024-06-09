@@ -1,8 +1,8 @@
 import numpy as np
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import image
 import os
-
+import joblib
+from PIL import Image
+from detection.config.configuration import get_training_config
 
 
 class PredictionPipeline:
@@ -13,18 +13,19 @@ class PredictionPipeline:
     
     def predict(self):
         # load model
-        model = load_model(os.path.join("artifacts","training", "model.keras"))
+        model = joblib.load(os.path.join("artifacts","training", "model.joblib"))
 
         imagename = self.filename
-        test_image = image.load_img(imagename, target_size = (224,224))
-        test_image = image.img_to_array(test_image)
-        test_image = np.expand_dims(test_image, axis = 0)
+        test_image = Image.open(imagename)
         result = np.argmax(model.predict(test_image), axis=1)
         print(result)
 
-        if result[0] == 1:
-            prediction = 'Healthy'
+        trainingConfig = get_training_config()
+
+
+        if result[0] > trainingConfig.params_threshold :
+            prediction = 'Adulterated'
             return [{ "image" : prediction}]
         else:
-            prediction = 'Coccidiosis'
+            prediction = 'Not Adulterated'
             return [{ "image" : prediction}]

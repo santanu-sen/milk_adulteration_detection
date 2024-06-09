@@ -15,11 +15,6 @@ class PrepareBaseModelConfig:
     base_model_path: Path
     updated_base_model_path: Path
 
-@dataclass(frozen=True)
-class PrepareCallbacksConfig:
-    root_dir: Path
-    tensorboard_root_log_dir: Path
-    checkpoint_model_filepath: Path
     
 
 @dataclass(frozen=True)

@@ -18,4 +18,5 @@ Flask
 Flask-Cors
 opencv-python
 tensorboardX
+pillow
 -e .
