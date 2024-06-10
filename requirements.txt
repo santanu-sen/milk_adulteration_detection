@@ -1,4 +1,3 @@
-tensorflow
 pandas 
 dvc
 notebook
@@ -17,6 +16,5 @@ xgboost
 Flask
 Flask-Cors
 opencv-python
-tensorboardX
 pillow
 -e .
